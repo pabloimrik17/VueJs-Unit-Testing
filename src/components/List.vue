@@ -2,6 +2,8 @@
   <div>
     <h1>My To Do List</h1>
   <br/>
+    <input v-model="newItem">
+    <button @click="addItemToList">Add</button>
     <ul>
       <li v-for="item in listItems" :key="item">{{ item }}</li>
     </ul>
@@ -14,7 +16,14 @@ export default {
   data() {
     return {
       listItems: ['buy food', 'play games', 'sleep'],
+      newItem: '',
     };
+  },
+  methods: {
+    addItemToList() {
+      this.listItems.push(this.newItem);
+      this.newItem = '';
+    },
   },
 };
 </script>
